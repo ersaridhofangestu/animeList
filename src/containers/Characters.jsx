@@ -21,16 +21,16 @@ const Characters = ({ anime }) => {
     return (
         <>
             {loading ? (<p>Loading</p>) : (
-                <>
+                <div className='px-3 md:px-0'>
                     <p className='text-xl font-bold text-dark/80'>Characters</p>
-                    <div className='grid grid-cols-2 gap-3 mt-2'>
+                    <div className='grid md:grid-cols-2 gap-3 mt-2'>
                         {
                             characters.map((data) => {
                                 return (
-                                    <div className='flex justify-between items-center bg-white rounded overflow-hidden shadow shadow-light text-sm' key={data.character.mal_id}>
+                                    <div className='flex justify-between items-center bg-white rounded overflow-hidden shadow shadow-lighttext-sm' key={data.character.mal_id}>
                                         <div className='flex gap-2 w-1/2'>
                                             {data.character.images.jpg.image_url != null ? (
-                                                <img className='h-24' src={data.character.images.jpg.image_url} alt={data.character.name} />
+                                                <img className='h-24 ' src={data.character.images.jpg.image_url} alt={data.character.name} />
                                             ) : (
                                                 <img className='h-24' src={PostserDefault} alt={data.character.name} />
                                             )}
@@ -57,7 +57,7 @@ const Characters = ({ anime }) => {
                             })
                         }
                     </div>
-                </>
+                </div>
             )}
         </>
 

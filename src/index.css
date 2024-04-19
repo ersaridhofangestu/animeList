@@ -86,4 +86,16 @@
       color: transparent;
     }
   }
+
+  @media screen and (max-width: 640px) {
+    .catbody {
+      width: 140px;
+    }
+    .tail {
+      width: 27px;
+    }
+    .wall {
+      width: 350px;
+    }
+  }
 }

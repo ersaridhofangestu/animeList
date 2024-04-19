@@ -21,11 +21,13 @@ const OverviewRelations = ({ entry }) => {
     <>
       {loading ? (<p>Loading...</p>) : (
         <>
-          <div className='bg-white flex items-center gap-3 rounded overflow-hidden shadow shadow-light'>
+          <div className='bg-white flex items-center gap-3 rounded overflow-hidden shadow shadow-light w-full'>
             <div className='h-32 overflow-hidden bg-yellow-500 flex'>
-              <img src={dataEntry} alt='' className='object-cover' />
+              {dataEntry ? (
+                <img src={dataEntry} alt={entry.name} className='object-cover' />
+              ) : (<img src={PostserDefault} alt={entry.name} className='object-cover' />)}
             </div>
-            <div className='flex flex-col gap-8'>
+            <div className='flex flex-col gap-8 '>
               <p className='text-sm uppercase font-bold text-dark/80 '>{entry.name}</p>
               <p className='capitalize'>{entry.type} <span className=' relative -top-1 text-4xl'>.</span> releasing</p>
             </div>
@@ -57,7 +59,7 @@ const OverviewCharacters = ({ id }) => {
       {loading ? (<p>Loading</p>) : (
         <>
           <p className='text-xl font-bold text-dark/80'>Characters</p>
-          <div className='grid grid-cols-2 gap-3'>
+          <div className='grid md:grid-cols-2 gap-3'>
             {
               characters.map((character) => {
                 console.log()
@@ -116,7 +118,7 @@ const OverviewStaff = ({ id }) => {
       {loading ? (<p>Loading</p>) : (
         <>
           <p className='text-xl font-bold text-dark/80'>Staff</p>
-          <div className='grid grid-cols-2 gap-3'>
+          <div className='grid md:grid-cols-2 gap-3'>
             {staff.map((staffData) => {
               return (
                 <div className='flex justify-between items-center bg-white rounded overflow-hidden shadow shadow-light text-sm' key={staffData.person.mal_id}>
@@ -180,14 +182,14 @@ const OverviewRecommendations = ({ id }) => {
             <p className='text-xl font-bold text-dark/80'>Recommendations</p>
             <p className='font-semibold cursor-pointer' onClick={handleView}>{view ? ("View All Recommendations") : ("View Less")}</p>
           </div>
-          <div className='grid grid-cols-5 gap-3 relative'>
+          <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 relative'>
             {limit.map((recommendation) => {
               const url = `/anime/${recommendation.entry.mal_id}/${recommendation.entry.title}`
               const path = decodeURIComponent(url).replace(/\s/g, '-');
               return (
                 <Link to={path} key={recommendation.entry.mal_id} className='relative group/recommendation'>
-                  <img className='h-52 w-full rounded' src={recommendation.entry.images.jpg.image_url} alt={`poster ${recommendation.entry.title}`} />
-                  <div className='absolute top-0 right-0 left-0 h-52 hidden group-hover/recommendation:block'>
+                  <img className='md:h-52 h-64 w-full rounded' src={recommendation.entry.images.jpg.image_url} alt={`poster ${recommendation.entry.title}`} />
+                  <div className='absolute top-0 right-5 left-5 md:right-0 md:left-0 md:h-52 h-64 hidden group-hover/recommendation:block'>
                     <div className='absolute p-3 flex bg-dark/80 rounded gap-2 bottom-2 left-2 right-2 justify-between '>
                       <div className='flex items-center gap-3'>
                         <FaThumbsUp size={15} className='fill-light/80' />
@@ -241,7 +243,7 @@ const OverviewForums = ({ id }) => {
     <>
       {loading ? (<p>Loading...</p>) : (<>
         <p className='text-xl font-bold text-dark/80'>Threads</p>
-        <div className='w-1/2 gap-3 relative flex flex-col'>
+        <div className='lg:w-1/2   gap-3 relative flex flex-col'>
           {limit.map((forum) => {
             return (
               <div className='flex justify-between items-center bg-white rounded overflow-hidden shadow shadow-light text-sm' key={forum.mal_id}>
@@ -270,7 +272,7 @@ const ForumsUser = ({ data, handleView, view }) => {
   }
   return (
     <>
-      <p className='absolute right-0 -top-9 text-lg' onClick={handleView}>{view ? ("view all") : ("close")}</p>
+      <p className='absolute right-0 -top-9 text-lg' onClick={handleView}>{!view ? ("view all") : ("close")}</p>
       {users.status == 200 && (
         <div className='p-5 flex justify-between relative w-full'>
           <div className='flex flex-col gap-3'>
@@ -297,9 +299,9 @@ const ForumsUser = ({ data, handleView, view }) => {
 
 const Overview = ({ anime }) => {
   return (
-    <div className='flex flex-col gap-3'>
+    <div className='flex flex-col gap-3 mx-3 md:mx-0'>
       <p className='text-xl font-bold text-dark/80'>Relations</p>
-      <div className='grid grid-cols-2 gap-3'>
+      <div className='grid md:grid-cols-2 gap-3'>
         {anime.relations[0].entry.map((entry) => (
           <OverviewRelations entry={entry} key={entry.mal_id} />
         ))}
@@ -309,7 +311,7 @@ const Overview = ({ anime }) => {
       <div>
         <p className='text-xl font-bold text-dark/80'>Trailer</p>
         <iframe
-          className='rounded shadow shadow-light mt-2'
+          className='rounded shadow shadow-light mt-2 w-full'
           width="560"
           height="315"
           src={`${anime.trailer.embed_url}&mute=1`}

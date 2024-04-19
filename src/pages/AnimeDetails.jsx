@@ -50,21 +50,23 @@ const AnimeDetails = () => {
                                     ) : (
                                         <div className='w-full h-80 overflow-hidden bg-dark/10' />
                                     )}
-                                    <div className='pt-80 grid grid-cols-4 max-w-[66rem] mx-auto gap-5 -mt-80 text-dark/80'>
-                                        <div className='relative -mt-40 flex flex-col gap-3 pb-7'>
-                                            {anime.images.jpg.large_image_url != null ? (
-                                                <img src={anime.images.jpg.large_image_url} alt={`postser ${anime.title}`} />
-                                            ) : (
-                                                <img src={PosterDefault} alt='there are no posters' />
-                                            )}
-                                            <div className='grid grid-cols-4 gap-5'>
-                                                <p className='col-span-3 p-2 bg-sky-500 text-center text-light rounded font-semibold capitalize hover:text-white transition-colors duration-300'>add to list</p>
-                                                <div className='flex justify-center items-center w-full h-full bg-red-600 rounded transition-colors duration-300 '>
-                                                    <FaHeart className='fill-white' />
+                                    <div className='pt-80  md:grid grid-cols-4 max-w-[66rem] mx-auto gap-5 -mt-80 text-dark/80'>
+                                        <div className='absolute top-10 flex justify-center items-center md:relative md:ml-0 md:-mt-40 w-full md:pb-7'>
+                                            <div className='flex justify-center items-center flex-col gap-3 w-56 bg-white md:bg-transparent md:p-0 md:shadow-transparent p-2 shadow-light md:pb-7 shadow-md'>
+                                                {anime.images.jpg.large_image_url != null ? (
+                                                    <img src={anime.images.jpg.large_image_url} alt={`postser ${anime.title}`} />
+                                                ) : (
+                                                    <img src={PosterDefault} alt='there are no posters' />
+                                                )}
+                                                <div className='grid grid-cols-3 md:grid-cols-4 gap-3 md:gap-5 w-full relative'>
+                                                    <p className='md:col-span-3 p-2 bg-sky-500 text-center text-light rounded font-semibold capitalize hover:text-white transition-colors duration-300 md:w-full w-32'>add to list</p>
+                                                    <div className='flex justify-center items-center w-1/3 md:w-full h-full bg-red-600 rounded transition-colors duration-300 absolute md:relative right-0'>
+                                                        <FaHeart className='fill-white' />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className='col-span-3 w-full flex flex-col gap-5 mt-5 z-10'>
+                                        <div className='col-span-4 md:col-span-3 px-3 md:px-0 w-full md:flex flex-col gap-5 mt-24 md:mt-5 z-10 text-center justify-center'>
                                             <p className='text-dark/80 font-light text-2xl'>{anime.title}</p>
                                             <div className='group/synopsis relative pb-9 text-xs  md:text-sm'>
                                                 <p>{anime.synopsis}
@@ -146,9 +148,11 @@ const AnimeDetails = () => {
                                             </div>
                                             <div className="flex-shrink-0 ">
                                                 <p>Gendres</p>
-                                                {anime.genres.map((genre) => (
-                                                    <p className='font-normal' key={genre.mal_id}>{genre.name}</p>
-                                                ))}
+                                                <div className='flex gap-3 md:flex-col'>
+                                                    {anime.genres.map((genre) => (
+                                                        <p className='font-normal' key={genre.mal_id}>{genre.name}</p>
+                                                    ))}
+                                                </div>
                                             </div>
                                             <div className="flex-shrink-0 ">
                                                 <p>English</p>

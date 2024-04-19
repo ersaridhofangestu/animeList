@@ -19,9 +19,9 @@ const Staff = ({ anime }) => {
     return (
         <>
             {loading ? (<p>Loading</p>) : (
-                <>
+                <div className='px-3 md:px-0'>
                     <p className='text-xl font-bold text-dark/80'>Staff</p>
-                    <div className='grid grid-cols-2 gap-3 mt-2'>
+                    <div className='grid md:grid-cols-2 gap-3 mt-2'>
                         {staff.map((staffData) => {
                             return (
                                 <div className='flex justify-between items-center bg-white rounded overflow-hidden shadow shadow-light text-sm' key={staffData.person.mal_id}>
@@ -40,7 +40,7 @@ const Staff = ({ anime }) => {
                             );
                         })}
                     </div>
-                </>)}
+                </div>)}
         </>
     )
 }
