@@ -74,7 +74,7 @@ const Anime = () => {
   }
   return (
     <>
-      {!loading ? (<Loading />) : (
+      {loading ? (<Loading />) : (
         <>
           <Fragment >
             <div className='ng-blue-500 w-full py-10 px-[1rem] lg:p-0 lg:py-52 lg:px-0 flex flex-col gap-14 max-w-[66rem] mx-auto overflow-hidden'>
