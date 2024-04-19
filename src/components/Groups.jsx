@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const GroupsComponent = ({ children, title, link = "view all", grid = "grid", href }) => {
     return (
-        <div className="max-w-[76rem] mx-auto flex flex-col gap-4">
+        <div className="w-full flex flex-col gap-4">
             <div className='flex justify-between items-center text-2xl text-dark/50'>
                 <Link to={href} className='uppercase font-bold hover:text-sky-500'>{title}</Link>
                 <Link to={href} className='capitalize hover:text-sky-500'>{link}</Link>
@@ -66,10 +66,10 @@ const ItemSmall = ({ api }) => {
                 const url = `/anime/${anime.mal_id}/${anime.title}`
                 const path = decodeURIComponent(url).replace(/\s/g, '-');
                 return (
-                    <div className='flex items-center gap-5  text-sm' key={anime.mal_id}>
+                    <div className='flex items-center gap-5 text-sm' key={anime.mal_id}>
                         <p className='text-4xl font-bold w-20 text-dark/50'>#{index + 1}</p>
-                        <Link to={path} className='flex justify-between items-center bg-white p-3 rounded w-full' key={anime.mal_id}>
-                            <div className='flex items-center w-full gap-5'>
+                        <Link to={path} className='flex items-center bg-white p-3 rounded w-full' key={anime.mal_id}>
+                            <div className='flex items-center gap-5 justify-start w-1/2'>
                                 <img src={anime.images.jpg.image_url} alt={`poster ${anime.title}`} className='rounded w-12' width={300} height={500} />
                                 <div className='flex flex-col gap-2'>
                                     <p className="font-bold" >{anime.title}</p>
@@ -80,7 +80,7 @@ const ItemSmall = ({ api }) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex items-center w-[50rem] gap-10 text-dark/80">
+                            <div className="flex items-center gap-10 text-dark/80 justify-end">
                                 <div className='flex flex-col gap-2'>
                                     <p className='font-semibold capitalize'>{anime.score}%</p>
                                     <p>{anime.members} users</p>

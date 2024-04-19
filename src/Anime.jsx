@@ -116,7 +116,7 @@ const Anime = () => {
                     </GroupsComponent>
                   )}
                   {topAnime.length > 1 && (
-                    <>
+                    <div className='max-w-[66rem] mx-auto'>
                       <div className='block lg:hidden'>
                         <GroupsComponent title={"top 25 anime"} href={`/anime/${"topAnime"}`} >
                           <ItemBig api={topAnime} number={true} />
@@ -127,7 +127,7 @@ const Anime = () => {
                           <ItemSmall api={topAnime} />
                         </GroupsComponent>
                       </div>
-                    </>
+                    </div>
                   )}
                 </>
               )}
