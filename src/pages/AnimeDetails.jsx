@@ -66,7 +66,7 @@ const AnimeDetails = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className='col-span-4 md:col-span-3 px-3 md:px-0 w-full md:flex flex-col gap-5 mt-24 md:mt-5 z-10 text-center justify-center'>
+                                        <div className='col-span-4 md:col-span-3 px-3 md:px-0 w-full md:flex flex-col gap-5 mt-36 md:mt-5 z-10 text-center justify-center'>
                                             <p className='text-dark/80 font-light text-2xl'>{anime.title}</p>
                                             <div className='group/synopsis relative pb-9 text-xs  md:text-sm'>
                                                 <p>{anime.synopsis}
